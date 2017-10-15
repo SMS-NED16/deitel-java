@@ -1,0 +1,324 @@
+5.1a) for;while/do-while
+   b) after
+   c) switch
+   d) continue
+   e) logical & or &&
+   f) false
+   g) static
+
+5.2a) False. Not always required. Will simply execute the first case if
+      default case is not found and no other case applies. For this reason,
+      probably a good idea to include a default case.
+   b) False. Not required. After the last case of a switch statement, the 
+      flow of control simply leaves the switch statement.
+   c) False. Is true only if both conditions are true. 
+   d) True
+   e) False. This is a grouping operation. It shows that the floating 
+      point value should be output using the numeric grouping that is 
+      commonly used in the system's country.
+      CORRECTION - TRUE apparently.
+   f) False. Can't test for a range of values in this way. Must change 
+      the range of values to integral values. 
+   g) True.
+   
+5.3a) 
+public class Scratchpad
+{
+	public static void main(String[] args)
+	{
+		int count = 1, sum = 0;
+		while (count <= 99)
+		{
+			sum += count;
+			count+=2;
+		}
+		System.out.printf("Sum:\t%d\n", sum);
+		System.out.println("END OF PROGRAMME");
+	}
+}
+
+5.3b)double result =  Math.pow(2.5, 3);
+
+5.3c) 
+public class Scratchpad
+{
+	public static void main(String[] args)
+	{
+		int i = 1;
+		while (i <= 20)
+		{
+			System.out.printf("%d\t", i);
+			if (i % 5 == 0)
+				System.out.println();
+			i++;
+		}
+	}
+}				
+
+5.3d)
+public class Scratchpad
+{
+	public static void main(String[] args)
+	{
+		for (int i = 1; i <= 20; i++)
+		{
+			System.out.printf("%d\t", i);
+			if (i % 5 == 0)
+				System.out.println();
+		}
+	}
+}
+
+5.4a) Error 1: i is missing data type. Correct using int i = 1;
+      Error 2: Extraneous semi-colon after right brace of while conditional. remove.
+      Error 3: Missing left brace for while loop. Either place left brace
+      after while conditional or remove right brace;
+5.4b) Error 1: k is missing the variable data type.
+	  Error 2: Infinite loop. 
+	  Error 3: Should probably not use a floating point variable as a counter	
+	  because these values are always stored approximately. Use bigDecimal maybe>
+5.4c) Break statement missing from case 1;
+5.4d) Error 1: variable type of n is missing;
+	  Error 2: Incorrect relational operator. Change < to <=
+	  
+5.5) Counter-controlled repetition requires a counter variable which must
+	 be an integer that is initialised to an initial value, a loop continuation condition, 
+	 a set of statements to be executed, and a counter increment or decrement operatior
+	 that changes the value of the counter so that the loop continuation condition
+	 is false.
+
+5.6) for repetition statement is used for counter-controlled repetition.
+     While repetition statement is used for sentinel-controlled repetition.
+      
+5.7) If our programme requires a loop to execute at least once, the do...while loop
+	 must be used.
+	 
+5.8) break statement causes the flow of control to exit a repetition structure,
+     often prematurely. continue does not cause the flow of control to exit the 
+     structure, but instead causes the programme to skip the current iteration of 
+     the repetition structure and move to the next iteration.
+     
+5.9a) Infinite loop. Change i++ to i-- if the loop is to terminate.
+   b) Add a break statement after the System.out.println() statement in at least case 0 block
+   c) Infinite loop. Change i+= 2 to i-= 2;
+   d) Off-by-one error. Change while condition to counter <= 100
+   
+5.10) A grid of '@' symbols of 10 rows and 5 columns.
+
+@@@@@
+@@@@@
+@@@@@
+@@@@@
+@@@@@
+@@@@@
+@@@@@
+@@@@@
+@@@@@
+@@@@@
+
+5.11)
+import java.util.Scanner;
+
+public class Scratchpad
+{
+	public static void main(String[] args)
+	{
+		Scanner input = new Scanner(System.in);
+		int temp, min, values;
+		System.out.println("Enter number of values to test.");
+		values = input.nextInt();
+		System.out.print("Enter number:\t");
+		temp = input.nextInt();
+		min = temp;
+		for (int i = 1; i < values; i++)
+		{
+			System.out.print("Enter number:\t");
+			temp = input.nextInt();
+			if (temp < min)
+				min = temp;
+		}
+		System.out.printf("Minimum value:\t%d", min);
+	}
+}
+
+5.12)
+public class Scratchpad
+{
+	public static void main(String[] args)
+	{	
+		int oddTerm = 1, product = 1;
+		while (oddTerm <= 15)
+		{
+			product *= oddTerm;
+			System.out.printf("Odd term:\t%d\n", oddTerm);
+			oddTerm+=2;
+		}
+		System.out.printf("Product:\t%d", product);
+	}
+}
+
+5.13)
+public class Scratchpad
+{
+	public static void main(String[] args)
+	{
+		long product;
+		System.out.printf("%10s%20s\n", "Number", "Factorial");
+		for (int n = 1; n <= 20; n++)
+		{
+			product = n;
+			if (n == 1)
+				System.out.printf("%10d%20d\n", n, 1);
+			else
+			{
+				for (int j = n-1; j >= 1; j--)
+				{
+					product*= j;
+				}
+				System.out.printf("%10d%20d\n", n, product);
+			}
+		}
+	}
+}
+
+5.14)
+import java.util.Scanner;
+
+public class Scratchpad
+{
+	public static void main(String[] args)
+	{
+		double	capital;
+		int	 	years;
+		Scanner input = new Scanner (System.in);
+		System.out.print("Enter capital.\t");
+		capital = input.nextDouble();
+		System.out.print("Enter duration.\t");
+		years = input.nextInt();
+		
+		for (int i = 0; i <= 5; i++)
+		{
+			double interest = 0;
+			double rate = (5.0 + i)/100.0;
+			System.out.printf("Interest Calculation "
+					+ "for Rate:\t%.2f\n", rate);
+			for (int j = 1; j <= years; j++)
+			{
+				interest += capital*rate;
+				capital += interest;
+			}
+			System.out.printf("Interest:\t%.2f\n", interest);
+		}
+		System.out.println("END OF PROGRAMME");
+	}
+}
+
+5.15)
+public class Scratchpad
+{
+	public static void main(String[] args)
+	{
+		for (int i = 1; i <= 10; i++)
+		{
+			for (int j = 1; j<=i; j++)
+			{
+				System.out.print("*");
+			}
+			System.out.println();
+		}
+		
+		System.out.println();
+		for (int i = 10; i >= 1; i--)
+		{
+			for (int j = 1; j <= i; j++)
+			{
+				System.out.print("*");
+			}
+			System.out.println();
+		}
+		
+		System.out.println();
+		for (int i = 10; i >= 1; i--)
+		{
+			String output = "";
+			for (int j = 1; j <= i; j++)
+			{
+				output += "*";
+			}
+			System.out.printf("%10s", output);
+			System.out.println();
+		}
+		
+		System.out.println();
+		for (int i = 1; i <= 10; i++)
+		{
+			String output = "";
+			for (int j = 1; j <= i; j++)
+			{
+				output+= "*";
+			}
+			System.out.printf("%10s", output);
+			System.out.println();
+		}
+		
+	}
+}
+
+5.16)
+import java.util.Scanner;
+
+public class Scratchpad
+{
+	public static void main(String[] args)
+	{
+		Scanner input = new Scanner (System.in);
+		int number;
+		for (int i = 1; i <= 5; i++)
+		{
+			System.out.print("Enter number to display graph:\t");
+			number = input.nextInt();
+			for (int j = 1; j <= number; j++)
+				System.out.print("*");
+			System.out.println();
+		}
+		input.close();
+	}
+}
+
+
+5.17)
+import java.util.Scanner;
+
+public class Scratchpad
+{
+	public static void printBar(int n)
+	{
+		for (int i = 1; i <= n; i++)
+		{
+			System.out.print("*");
+		}
+		System.out.println();
+	}
+	
+	public static void main(String[] args)
+	{
+		Scanner input = new Scanner (System.in);
+		int n1, n2, n3, n4, n5;
+		System.out.print("Enter first number:\t");
+		n1 = input.nextInt();
+		
+		System.out.print("Enter second number:\t");
+		n2 = input.nextInt();
+		
+		System.out.print("Enter third number:\t");
+		n3 = input.nextInt();
+		
+		System.out.print("Enter fourth number:\t");
+		n4 = input.nextInt();
+		
+		System.out.print("Enter fifth number:\t");
+		n5 = input.nextInt();
+		
+		printBar(n1); printBar(n2); printBar(n3); printBar(n4); printBar(n5);
+	}
+}
