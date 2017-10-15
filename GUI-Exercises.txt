@@ -1,0 +1,72 @@
+import java.awt.Graphics;
+import javax.swing.JPanel;
+
+public class DrawPanel extends JPanel
+{
+	public void paintComponent(Graphics g)
+	{
+		super.paintComponent( g );
+		int width = getWidth();
+		int height = getHeight();
+		int steps = 15;
+		int widthStepSize = width/steps;
+		int heightStepSize = height/steps;
+		System.out.printf("Width step:%d", widthStepSize);
+		for (int i = 1; i < steps; i++)
+		{
+			//TOP LEFT CORNER
+			g.drawLine(0, 0,
+			0 + i*widthStepSize, height - i*heightStepSize);
+			
+			
+			//BOTTOM LEFT CORNER
+			g.drawLine(0, height, 
+					width - i*widthStepSize, height - i*heightStepSize);
+		
+			//TOP RIGHT CORNER
+			g.drawLine(width, 0, 
+					width - i*widthStepSize, height-i*heightStepSize);
+			
+			//BOTTOM RIGHT CORNER
+			g.drawLine(width, height,
+					0 + i*widthStepSize, height - i*heightStepSize);
+		}
+	}
+}
+
+//exponential bounds
+import java.awt.Graphics;
+import javax.swing.JPanel;
+
+public class DrawPanel extends JPanel
+{
+	public void paintComponent(Graphics g)
+	{
+		super.paintComponent( g );
+		int width = getWidth();
+		int height = getHeight();
+		int steps = 15;
+		int widthStepSize = width/steps;
+		int heightStepSize = height/steps;
+	
+		for (int i = 0; i < steps; i++)
+		{
+			//LEFT AND BOTTOM EDGE
+			g.drawLine(0, 0 + i*heightStepSize,
+					0 + i*widthStepSize, height);
+			
+			//RIGHT AND BOTTOM EDGE
+			g.drawLine(width, 0 + i*heightStepSize, 
+					width - i*widthStepSize, height);
+			
+			//TOP AND LEFT EDGE
+			g.drawLine(0 + i*widthStepSize, 0,
+					width, 0 + i*heightStepSize );
+			
+			//TOP AND RIGHT EDGE
+			g.drawLine(width - i*widthStepSize, 0, 
+					0, 0 +i*heightStepSize);
+		}
+		
+	}
+}
