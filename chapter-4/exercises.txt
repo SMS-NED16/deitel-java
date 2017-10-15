@@ -1,0 +1,598 @@
+4.1a) sequence, selection, repetition
+   b) double selection/if-else
+   c) counter-controlled
+   d) sentinel value
+   e) sequence
+   f) zero/0
+   g) strongly typed
+   h) prefixed
+
+4.2a) True. Textbook definition of an algorithm.
+   b) True.
+      CORRECTION - False. Must be contained within a pair of BRACES, 
+      not parentheses.
+   c) False. This is the definition of a while statement
+      which is a repetition structure, not a selection structure.
+   d) True. 
+   e) True. 
+   f) False. Are accessible across all platforms and are defined
+      in the same way for all platforms in Java. This is why Java 
+      programmes are portable i.e. can run on any OS regardless of the 
+      OS the programme was originally written on.
+   g) True? Flow of control is the same as programme control.
+   h) False. Creates a temporary double floating point copy of its operand.
+   i) True
+      CORRECTION - False. Java booleans are false by default.
+   j) True
+   
+4.3) x = x + 1; x+=1; x++; ++x;
+
+4.4a) z = x++ + y;
+   b) if (count > 10)
+   		System.out.println("Count is greater than 10");
+   c) total = total - --x; total -= --x;
+   d) q = q % divisor; q %= divisor;
+   
+4.5a) int sum, x;
+   b) x = 1;
+   c) sum = 0;
+   d) sum += x;
+   e) System.put.printf("The sum is:\t%d\n", sum);
+
+4.6)
+public class scratchpad
+{
+	public static void main(String[] args)
+	{
+		int x = 1, sum = 0;
+		while (x <= 10)
+		{
+			sum+= x;
+			x++;
+		}
+		System.out.printf("Sum is:\t%d", sum);
+	}
+}
+
+4.7) product = 5, x = 5;
+	 product *= x++;
+	 product = 25; x = 6;
+	 
+4.8a) c has not been initialised. 
+      CORRECTION - Missing right brace for while block.
+   b) semi-colon after else statement.
+   
+4.9) Infinite loop as there is no statement in the body of the loop
+     that modifies the value of z so that it becomes less than zero. 
+     So loop never terminates. Also, z is not initialised.
+     
+4.10) Single selection statement is a selection statement - if a condition is true,
+	  it will execute the steps enclosed in the following block. By default, single 
+	  selection statements do not execute more than once - they need a nested repetition
+	  structure in order to do this.
+	  
+	  While is a repetition statement. Will continue to perform a set of actions until
+	  condition becomes false.  
+	  
+	  Both the while statement and the if statement will not execute if the condition
+	  is false. Another similarity is that if it is possible for both of these 
+	  structures not to execute even once.
+     
+4.11) When integer-integer division is performed, the result may very well be a 
+      floating point number as per rules of conventional arithmetic. In Java, however,
+      the fractional part of the result is truncated or lost and only the integer
+      part of the result is retained.
+
+4.12) Stacked control structures - flow of control is transferred from the termination
+      of one control structure to the beginning of another control structure in sequence.
+      
+      Nested control structures - the body of one control structure is placed inside the 
+      body of another control structure. So the termination of one control structure does
+      not necessarily flow to the beginning of the other control structure.
+      
+4.13) Counter controlled repetition structure.
+      Sentinel controlled repetition structure.
+      
+4.14) Preincrementing - the value of the variable is incremented before being used
+      in the statement in which it is placed.
+      Postincrementing - first the statement containing the variable is executed with
+      the current value of the variable. After this statement has been executed, the 
+      value of the variable is incremented.
+      
+4.15a) semi-colon after if conditional
+    b) total is uninitialised. 
+    c) opening and closing braces of while block are missing. 
+       x is uninitialised.
+    d) Closing brace of while statement is missing.
+       Also looks like an infinite loop
+    
+4.16) Prints squares of all integers from 1 to 10 inclusive.
+      Prints sum of all squares of integers from 1 to 10 inclusive.
+      
+4.17)
+
+import java.util.Scanner;
+
+public class scratchpad
+{
+	public static void main(String[] args)
+	{
+		Scanner input = new Scanner(System.in);
+		System.out.println("Mileage Calculator");
+		int	tempMiles, tempGallons, totalMiles = 0, totalGallons = 0;
+		
+		System.out.println("Enter miles driven and gallons used.");
+		System.out.println("Enter -1 to terminate.");
+		tempMiles = input.nextInt();
+		tempGallons = input.nextInt();
+		while(tempMiles != -1 && tempGallons != -1)
+		{
+			totalMiles += tempMiles;
+			totalGallons += tempGallons;
+			
+			System.out.printf("Total Miles:\t%.2f\n", (double)totalMiles);
+			System.out.printf("Total Gallons:\t%.2f\n", (double)totalGallons);
+			
+			System.out.printf("Trip Mileage:\t%.2f\n", (double)(tempMiles)/tempGallons);
+			System.out.printf("Total Mileage:\t%.2f\n", (double)(totalMiles)/totalGallons);
+			
+			
+			System.out.println("Enter miles driven and gallons used.");
+			System.out.println("Enter -1 to terminate.");
+			tempMiles = input.nextInt();
+			tempGallons = input.nextInt();
+		}
+		System.out.println("END OF PROGRAMME");
+	}
+}
+
+4.18)
+import java.util.Scanner;
+
+public class scratchpad
+{
+	public static void main(String[] args)
+	{
+		Scanner input = new Scanner(System.in);
+		System.out.println("Mileage Calculator");
+		int	tempMiles, tempGallons, totalMiles = 0, totalGallons = 0;
+		
+		System.out.println("Enter miles driven and gallons used.");
+		System.out.println("Enter -1 to terminate.");
+		tempMiles = input.nextInt();
+		tempGallons = input.nextInt();
+		while(tempMiles != -1 && tempGallons != -1)
+		{
+			totalMiles += tempMiles;
+			totalGallons += tempGallons;
+			
+			System.out.printf("Total Miles:\t%.2f\n", (double)totalMiles);
+			System.out.printf("Total Gallons:\t%.2f\n", (double)totalGallons);
+			
+			System.out.printf("Trip Mileage:\t%.2f\n", (double)(tempMiles)/tempGallons);
+			System.out.printf("Total Mileage:\t%.2f\n", (double)(totalMiles)/totalGallons);
+			
+			
+			System.out.println("Enter miles driven and gallons used.");
+			System.out.println("Enter -1 to terminate.");
+			tempMiles = input.nextInt();
+			tempGallons = input.nextInt();
+		}
+		System.out.println("END OF PROGRAMME");
+	}
+}
+
+4.19)
+import java.util.Scanner;
+
+public class scratchpad
+{
+	public static void main(String[] args)
+	{
+		Scanner input = new Scanner(System.in);
+		System.out.println("SALES COMMISSION CALCULATOR");
+		int tempInt;
+		float totalSales = 0;
+		System.out.print("Enter number or -1 to exit.\t");
+		tempInt = input.nextInt();
+		while(tempInt != -1)
+		{
+			if (tempInt == 1)
+				totalSales += 239.99;
+			else if (tempInt == 2)
+				totalSales += 129.75;
+			else if (tempInt == 3)
+				totalSales += 99.95;
+			else 
+				totalSales += 350.89;
+			
+			System.out.print("Enter number or -1 to exit.\t");
+			tempInt = input.nextInt();
+		}
+		System.out.printf("Total sales this month:\t%.2f\n", totalSales);
+		//System.out.printf("9% Commission:\t%.2f\n", 0.09*totalSales);
+		System.out.printf("200 Base Pay:\t%.2f\n", 200.00);
+		System.out.printf("Total Pay:\t%.2f\n", 200 + 0.09*totalSales);
+		System.out.println("END OF PROGRAMME");
+	}
+}
+
+4.20)
+import java.util.Scanner;
+
+public class scratchpad
+{
+	public static void main(String[] args)
+	{
+		Scanner input = new Scanner(System.in);
+		int employeeNumber = 0, hoursWorked;
+		double	hourlyRate, salary;
+		System.out.println("SALARY CALCULATOR");
+		while (employeeNumber < 3)
+		{
+			System.out.printf("Enter details for employee %d\n", employeeNumber + 1);
+			System.out.printf("Enter hours worked:\t");
+			hoursWorked = input.nextInt();
+			System.out.printf("Enter hourly rate.:\t");
+			hourlyRate = input.nextDouble();
+			if (hoursWorked <= 40)
+				salary = hoursWorked*hourlyRate;
+			else
+				salary = 40*hourlyRate + (hoursWorked - 40)*1.5*hourlyRate;
+			
+			System.out.printf("Salary for Employee %d:\t%.2f\n", employeeNumber + 1, salary);
+			employeeNumber++;
+		}
+		System.out.println("END OF PROGRAMME");
+		input.close();
+	}
+}
+
+4.21)
+
+import java.util.Scanner;
+
+public class scratchpad
+{
+	public static void main(String[] args)
+	{
+		Scanner input = new Scanner (System.in);
+		System.out.println("Max Number Programme");
+		int tempInt, max, entries = 0;
+		System.out.println("Enter an integer.");
+		tempInt = input.nextInt();
+		max = tempInt;
+		entries++;
+		while (entries < 10)
+		{
+			System.out.println("Enter an integer.");
+			tempInt = input.nextInt();
+			if (tempInt > max)
+				max = tempInt;
+			entries++;
+		}
+		System.out.printf("Max number entered:\t%d\n", max);
+		System.out.println("END OF PROGAMME");
+		input.close();
+	}
+}
+
+4.22)
+public class scratchpad
+{
+	public static void main(String[] args)
+	{
+		int n = 1;
+		System.out.println("Printing table of values.");
+		while (n <= 5)
+		{
+			System.out.printf("%d\t%d\t\t%d\t\t%d\n", n, n*10, n*100, n*1000);
+			n++;
+		}
+	}
+}
+
+4.23)
+import java.util.Scanner;
+
+public class scratchpad
+{
+	public static void main(String[] args)
+	{
+		Scanner input = new Scanner(System.in);
+		int tempInt, largest, secondLargest, counter = 0, buffer;
+		System.out.print("Enter a number.\t");
+		tempInt = input.nextInt();
+		largest = tempInt;
+		counter++;
+		System.out.print("Enter a number.\t");
+		tempInt = input.nextInt();
+		counter++;
+		if (tempInt > largest)
+		{
+			buffer = largest;
+			largest = tempInt;
+			secondLargest = buffer;
+		}
+		else
+			secondLargest = tempInt;
+		while(counter < 10)
+		{
+			System.out.print("Enter a number.\t");
+			tempInt = input.nextInt();
+			counter++;
+			if (tempInt > largest)
+			{
+				secondLargest = largest;
+				largest = tempInt;
+			}
+			if (tempInt < largest && tempInt > secondLargest)
+				secondLargest = tempInt;
+		}
+		System.out.printf("Largest:\t%d\n", largest);
+		System.out.printf("Second Largest:\t%d\n", secondLargest);
+		input.close();
+	}
+}
+
+4.25)
+****
+++++++++
+****
+++++++++
+****
+++++++++
+****
+++++++++
+****
+++++++++
+
+
+4.26)
+>>>>>>>>>>
+<<<<<<<<<<
+>>>>>>>>>>
+<<<<<<<<<<
+>>>>>>>>>>
+<<<<<<<<<<
+>>>>>>>>>>
+<<<<<<<<<<
+>>>>>>>>>>
+<<<<<<<<<<
+
+
+4.27a) x = 11, y = 9;
+      $$$$
+    b) #####
+       $$$$$
+
+4.29)
+import java.util.Scanner;
+
+public class scratchpad
+{
+	public static void main(String[] args)
+	{
+		Scanner input = new Scanner(System.in);
+		int sideLength, counter = 0;
+		System.out.println("Enter side length.");
+		sideLength = input.nextInt();
+		while (counter < sideLength)
+		{
+			if (counter == 0 || counter == sideLength - 1)
+			{
+				int temp = 0;
+				while (temp < sideLength)
+				{
+					System.out.print("*");
+					temp++;
+				}
+				System.out.println();
+			}
+			else
+			{
+				System.out.print("*");
+				int temp = 1;
+				while (temp < sideLength-1)
+				{
+					System.out.print(" ");
+					temp++;
+				}
+				System.out.print("*");
+				System.out.println();
+			}
+			counter++;
+		}
+		input.close();
+	}
+}
+
+4.30)
+import java.util.Scanner;
+
+public class scratchpad
+{
+	public static void main(String[] args)
+	{
+		String numberInput = null;
+		Scanner input = new Scanner(System.in);
+		
+		System.out.println("Palindrome Checker");
+		boolean fiveDigit = false;
+		while (fiveDigit == false)
+		{
+			System.out.println("Enter a five digit integer.");
+			numberInput = input.nextLine();
+			if (Integer.parseInt(numberInput) > 99999 || 
+				Integer.parseInt(numberInput) < 10000)
+			{
+				fiveDigit = false;
+				System.out.println("Not a five digit number. Try again.");			}
+			else 
+				fiveDigit = true;
+		}
+		input.close();
+		System.out.printf("You entered the number:\t%s\n", numberInput);
+		
+		
+		if (numberInput.charAt(0) == numberInput.charAt(4)
+			&& numberInput.charAt(1) == numberInput.charAt(3))
+			System.out.printf("%s is a palindrome.\n", numberInput);
+		
+		else
+			System.out.printf("%s is not a palindrome.\n", numberInput);
+		System.out.println("END OF PROGRAMME");
+	}
+}
+
+4.32)
+public class scratchpad
+{
+	public static void main(String[] args)
+	{
+		for (int i = 0; i < 10; i++)
+		{
+			if (i%2 != 0)
+			{
+				System.out.print(" ");
+			}
+			for (int j = 0; j < 10; j++)
+			{
+				System.out.print("* ");
+			}
+			System.out.println();
+		}
+		System.out.println("END OF PROGRAMME");
+	}
+}
+
+
+4.33)
+public class scratchpad
+{
+	public static void main(String[] args)
+	{
+		int i = 1;
+		{
+			while (i > 0)
+			{
+				System.out.printf("%d\t", 2*i);
+				if ((i+1)%10 == 0)
+					System.out.println();
+				i++;
+			}
+		}
+	}
+}
+Programme continues on an infinite loop. Does not stop. Values overflow around 2 billion
+
+
+4.34) Cannot prefix increment an expression like (x+y). Need to store this as a separate
+	  variable and then prefix it.
+	  System.out.println(x+y+1);
+	  
+4.35) Three numbers may represent the lengths sides of a triangle if the sum of
+	  any two numbers is greater than the third number. This is also known as the 
+	  Cauchy-Schwartz inequality.
+import java.util.Scanner;
+
+public class scratchpad
+{
+	public static void main(String[] args)
+	{
+		float side1, side2, side3;
+		Scanner input = new Scanner(System.in);
+		System.out.print("Enter length of side 1.\t");
+		side1 = input.nextFloat();
+		System.out.print("Enter length of side 2.\t");
+		side2 = input.nextFloat();
+		System.out.print("Enter length of side 3.\t");
+		side3 = input.nextFloat();
+		
+		if (side1 + side2 > side3 ||
+			side2 + side3 > side1 ||	
+			side1 + side3 > side2)
+		{
+			System.out.println("These numbers may represent sides of a triangle.");
+		}
+		else
+		{
+			System.out.println("These numbers do not represent sides of a triangle.");
+		}
+		input.close();
+		System.out.println("END OF PROGRAMME");
+	}
+}
+
+4.36)
+import java.util.Scanner;
+
+public class scratchpad
+{
+	public static void main(String[] args)
+	{
+		Scanner input = new Scanner(System.in);
+		float s1, s2, s3;
+		System.out.println("Enter length of side 1.");
+		s1 = input.nextFloat();
+		System.out.println("Enter length of side 2.");
+		s2 = input.nextFloat();
+		System.out.println("Enter length of side 3.");
+		s3 = input.nextFloat();
+	
+		if (s1*s1 == s2*s2 + s3*s3 ||
+		    s2*s2 == s1*s1 + s3*s3 ||
+		    s3*s3 == s1*s1 + s2*s2)
+			System.out.println("May represent sides of RT Angled Triangle.");
+		else
+			System.out.println("Are not sides of a right angled triangle.");
+		input.close();
+		System.out.println("END OF PROGRAMME");
+	}
+}
+
+4.37)
+import java.util.Scanner;
+
+public class Encryption
+{
+	public static void main(String[] args)
+	{
+		Scanner input = new Scanner(System.in);
+		String userNumber = null, encrypted;
+		boolean validInput = false;
+		while (validInput == false)
+		{
+			System.out.println("Enter a four digit integer.");
+			userNumber = input.nextLine();
+			if (Integer.parseInt(userNumber) > 9999||
+				Integer.parseInt(userNumber) < 1000)
+			{
+				validInput = false;
+				System.out.println("Invalid input");
+			}
+			else
+				validInput = true;
+		}
+		int n1, n2, n3, n4, temp;
+		n1 = Character.getNumericValue(userNumber.charAt(0));
+		n2 = Character.getNumericValue(userNumber.charAt(1));
+		n3 = Character.getNumericValue(userNumber.charAt(2));
+		n4 = Character.getNumericValue(userNumber.charAt(3));
+			
+		System.out.printf("Original number:\t%d %d %d %d\n", n1, n2, n3, n4);
+		
+		n1 += 7; n1%=10;
+		n2 += 7; n2%=10;
+		n3 += 7; n3%=10;
+		n4 += 7; n4%=10;
+		
+		temp = n1; n1 = n3; n3 = temp;
+		temp = n2; n2 = n4; n4 = temp;
+		
+		encrypted = String.format("%d %d %d %d", n1, n2, n3, n4);
+		System.out.printf("Encrypted number:\t%s\n", encrypted);		
+		input.close();
+		System.out.println("END OF PROGRAMME");
+	}
+}
