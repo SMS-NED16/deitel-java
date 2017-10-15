@@ -1,0 +1,724 @@
+Deitel's Java: Self Review Exercises - Chapter 2
+
+2.1a) { (left brace), } (right brace)
+2.1b) if or conditional
+2.1c) //
+2.1d) tabs, newlines, spaces
+2.1e) keywords
+2.1f) main(String[] args)
+2.1g) System.out.print, System.out.printf, System.out.println
+
+
+2.2a) False - comments are ignored by the compiler
+2.2b) True - variable declarations are incomplete without 
+	  specifying variable name and data type. Data type is
+	  needed to determine how much memory must be saved for
+	  the variable by the compiler
+2.2c) False - Java is case-sensitive, so number and numbEr
+	  are different variables
+2.2d) True - % is an integer operator - INCORRECT
+	  FALSE - REMAINDER OPERATOR CAN ALSO BE USED WITH NONINTEGER OPERANDS IN JAVA
+2.2e) False - *. /. % have the same level of precedence. 
+              +/- are evaluated after */% operations.
+
+
+2.3a) int c, thisIsAVariable, q76543, number;
+2.3b) System.out.println("Enter an integer.");
+2.3c) Scanner input = new Scanner(input.in);
+	  int number;
+	  System.out.println("Enter an integer.");
+	  number = input.nextInt();
+2.3d) System.out.println("This is a Java Programme.");
+2.3e) System.out.println("This is a Java\nProgramme.");
+2.3f) System.out.printf("%s\n%s\n", "This is a Java", "programme.");
+2.3g) if (number != 7)
+		System.out.println("The variable number is not equal to 7.");
+
+
+
+2.4a) No semi-colon after the if conditional.
+	  Should be if (c < 7)
+	  			System.out.println("c is less than 7.") 
+2.4b) => is an invalid relational operator. Should be >=
+
+
+2.5a)//This programme calculates the product of three integers
+2.5b)Scanner input = new Scanner(System.in);
+2.5c) int	x, y, z, result;
+2.5d) System.out.print("Enter first integer:\t");
+2.5e) x = input.nextInt();
+2.5f) System.out.print("Enter the second integer:\t");
+2.5g) y = input.nextInt();
+2.5h) System.out.println("Enter the third integer:\t");
+2.5i) z = input.nextInt();
+2.5j) result = x*y*z;
+2.5k) System.out.printf("Product is:\t%d.\n", result);
+
+
+2.6)
+//Deitel's Java - Exercise 2.2
+//This programme calculates the product of three integers
+//Saad Mashkoor Siddiqui, 7/10/17
+
+import java.util.Scanner;
+
+public class Test2
+{
+	public static void main(String[] args)
+	{
+		Scanner input = new Scanner(System.in);
+		int	x, y, z, result;
+		
+		System.out.println("This programme calculates the"
+				+ " product of three integers entered by the user.");
+		System.out.print("Enter first integer:\t");
+		x = input.nextInt();
+		
+		System.out.print("Enter second integer:\t");
+		y = input.nextInt();
+		
+		System.out.print("Enter third integer:\t");
+		z = input.nextInt();
+		
+		result = x*y*z;
+		
+		System.out.printf("Product is %d.\n", result);
+		System.out.println("END OF PROGRAMME.");
+	}
+}
+
+
+2.7a) Comments
+2.7b) if statement/conditonal
+2.7c) assignment/arithmetic
+2.7d) division / and remainder %
+2.7e) inner 
+2.7f) variable
+
+
+2.8a) System.out.print("Enter an integer:\t");
+2.8b) a = b * c;
+2.8c) //This programme performs a simple payroll calculation
+
+
+2.9a) FALSE - evaluated on the basis of precedence. If same precedence, 
+      then evaluated from left to right.
+2.9b) All contain letters, numbers, $, and underscores.
+	  None of them begins with a number. 
+	  None of them have spaces.
+2.9c) False - evaluated in order of precedence
+2.9d) True - all of them begin with numbers.
+
+
+2.10a) x = 2
+2.10b) Value of 2 + 2 = 4
+2.10c) x =
+2.10d) 5 = 5
+
+
+2.11a) p's value is modified
+2.11b) Not modified. Simply printing a message.
+2.11c) Not modified. Simply printing a = 5. Not assignment, so no modification.
+2.11d) variable value now stores a new integer, so modified.
+
+
+2.12) y = a*x*x*x + 7; y = (a*x)*x*x + 7; y = (a*(x*x*x))+7;
+
+
+2.14a/b/c)
+//Deitel's Java - Exercise 2.14abc
+//This programme prints four numbers separated by spaces
+//Using different output methods in java.lang
+//Saad Mashkoor Siddiqui, 7/10/17
+
+public class Test2
+{
+	public static void main(String[] args)
+	{
+		//Printing numbers with one System.out.println() statement
+		System.out.println("1 2 3 4");
+		
+		//Printing numbers with four System.out.print() statements 
+		System.out.print("1 "); System.out.print("2 "); System.out.print("3 "); System.out.print("4\n");
+		
+		//Printing numbers using one System.out.printf() statement
+		System.out.printf("%d %d %d %d\n", 1, 2, 3, 4);
+	}
+}
+
+
+2.15)
+//Deitel's Java - Exercise 2.15
+//This programme performs arithmetic operations on two integers
+//Entered by the user
+//Saad Mashkoor Siddiqui, 7/10/17
+
+import java.util.Scanner;
+
+public class Test2
+{
+	public static void main(String[] args)
+	{
+		Scanner input = new Scanner(System.in);
+		int num1, num2;
+		
+		System.out.print("Enter first number:\t");
+		num1 = input.nextInt();
+		
+		System.out.print("Enter second number:\t");
+		num2 = input.nextInt();
+		
+		System.out.printf("Sum:\t\t%d\n", num1 + num2);
+		System.out.printf("Difference:\t%d\n", num1 - num2);
+		System.out.printf("Product:\t%d\n", num1 * num2);
+		System.out.printf("Quotient:\t%d\n", num1 / num2);
+		System.out.printf("Remainder:\t%d\n", num1 % num2);
+		System.out.println("END OF PROGRAMME.");
+	}
+}
+
+
+2.16)
+//Deitel's Java - Exercise 2.14abc
+//This programme performs arithmetic operations on two integers
+//Entered by the user
+//Saad Mashkoor Siddiqui, 7/10/17
+
+import java.util.Scanner;
+
+public class Test2
+{
+	public static void main(String[] args)
+	{
+		Scanner input = new Scanner(System.in);
+		int num1, num2;
+		
+		System.out.print("Enter first number:\t");
+		num1 = input.nextInt();
+		
+		System.out.print("Enter second number:\t");
+		num2 = input.nextInt();
+		
+		System.out.printf("Sum:\t\t%d\n", num1 + num2);
+		System.out.printf("Difference:\t%d\n", num1 - num2);
+		System.out.printf("Product:\t%d\n", num1 * num2);
+		System.out.printf("Quotient:\t%d\n", num1 / num2);
+		System.out.printf("Remainder:\t%d\n", num1 % num2);
+		System.out.println("END OF PROGRAMME.");
+	}
+}
+
+
+2.17)
+//Deitel's Java - Exercise 2.17
+//This programme asks the user to enter three numbers
+//It then computes the average of the three numbers
+//And displays the maximum and minimum values
+//Saad Mashkoor Siddiqui, 7/10/17
+
+import java.util.Scanner;
+
+public class Test2
+{
+	public static void main(String[] args)
+	{
+		Scanner input = new Scanner(System.in);
+		float num1, num2, num3, average, min, max;
+		
+		System.out.print("Enter first number.\t");
+		num1 = input.nextFloat();
+		min  = num1;
+		max  = num1;
+		
+		System.out.print("Enter second number.\t");
+		num2 = input.nextFloat();
+		if (num2 > max)
+			max = num2;
+		if (num2 < min)
+			min = num2;
+		
+		System.out.print("Enter third number.\t");
+		num3 = input.nextFloat();
+		if (num3 > max)
+			max = num3;
+		if (num2 < min)
+			min = num3;
+		
+		average = (num1 + num2 + num3)/3;
+		System.out.printf("Average value is:\t%f\n", average);
+		System.out.printf("Minimum value is:\t%f\n", min);
+		System.out.printf("Maximum value is:\t%f\n", max);
+		System.out.println("END OF PROGRAMME.");
+	}
+}
+
+
+2.18)
+//Deitel's Java - Exercise 2.17
+//This programme prints shapes using asterisks
+//Saad Mashkoor Siddiqui, 7/10/17
+
+public class Test2
+{
+	public static void square()
+
+	{
+		System.out.println("*********");
+		System.out.println("*       *");
+		System.out.println("*       *");
+		System.out.println("*       *");
+		System.out.println("*       *");
+		System.out.println("*       *");
+		System.out.println("*       *");
+		System.out.println("*       *");
+		System.out.println("*********");
+	}
+	public static void arrow()
+	{
+		System.out.println("    *    ");
+		System.out.println("   ***   ");
+		System.out.println("  *****  ");
+		System.out.println("    *    ");
+		System.out.println("    *    ");
+		System.out.println("    *    ");
+		System.out.println("    *    ");
+		System.out.println("    *    ");
+		System.out.println("    *    ");
+	}
+	public static void diamond()
+	{
+		System.out.println("    *     ");
+		System.out.println("   * *    ");
+		System.out.println("  *   *   ");
+		System.out.println(" *     *  ");
+		System.out.println("*       * ");
+		System.out.println(" *     *  ");
+		System.out.println("  *   *   ");
+		System.out.println("   * *    ");
+		System.out.println("    *     ");
+	}
+	public static void circle()
+	{
+		System.out.println("   ***   ");
+		System.out.println(" *     *  ");
+		System.out.println("*       * ");
+		System.out.println("*       * ");
+		System.out.println("*       * ");
+		System.out.println("*       * ");
+		System.out.println(" *     *  ");
+		System.out.println("   ***    ");
+	}
+	public static void main (String[] args)
+	{
+		square();
+		System.out.println();
+		arrow();
+		System.out.println();
+		diamond();
+		System.out.println();
+		circle();
+		System.out.println("\nEND OF PROGRAMME");
+	}
+}
+
+
+2.19)
+*
+**
+***
+****
+*****
+
+
+2.20)
+*
+***
+*****
+****
+**
+
+
+2.21)
+***************
+
+
+2.22)
+****
+*****
+******
+
+
+2.23)
+*
+***
+*****
+
+
+2.24)
+//Deitel's Java - Exercise 2.24
+//This programme prints max and min values of five integers
+//Saad Mashkoor Siddiqui, 7/10/17
+
+import java.util.Scanner;
+
+public class Test2
+{
+	public static void main (String[] args)
+	{
+		float num1, num2, num3, num4, num5, min, max;
+		Scanner input = new Scanner(System.in);
+		System.out.println("Enter five numbers.");
+		num1 = input.nextFloat();
+		min = num1; max = num1; 
+		
+		num2 = input.nextFloat();
+		if (num2 < min)
+			min = num2;
+		if (num2 > max)
+			max = num2;
+		
+		num3 = input.nextFloat();
+		if (num3 < min)
+			min = num3;
+		if (num3 > max)
+			max = num3;
+		
+		num4 = input.nextFloat();
+		if (num4 < min)
+			min = num4;
+		if (num4 > max)
+			max = num4;
+		
+		num5 = input.nextFloat();
+		if (num5 < min)
+			min = num5;
+		if (num5 > max)
+			max = num5;
+		
+		System.out.println("You entered the following numbers.");
+		System.out.printf("%f\t%f\t%f\t%f\t%f\n", num1, num2, num3, num4, num5);
+		System.out.printf("Minimum is:\t%f\n", min);
+		System.out.printf("Maximum is:\t%f\n", max);
+		System.out.println("END OF PROGRAMME");
+	}
+}
+
+
+2.26)
+//Deitel's Java - Exercise 2.26
+//Checking for multiples
+//Saad Mashkoor Siddiqui, 7/10/17
+
+import java.util.Scanner;
+
+public class Test2
+{
+	public static void main (String[] args)
+	{
+		Scanner input = new Scanner(System.in);
+		int	num1, num2;
+		
+		System.out.print("Enter first number:\t");
+		num1 = input.nextInt();
+		
+		System.out.print("Enters second number:\t");
+		num2 = input.nextInt();
+		
+		 if (num1 % num2 == 0)
+			 System.out.printf("%d is a multiple of %d.\n", num1, num2);
+		 
+		 else if (num2 % num1 == 0)
+			 System.out.printf("%d is a multiple of %d.\n", num2, num1);
+		 
+		 else
+			 System.out.printf("%d and %d are not multiples.\n", num1, num2);
+		 
+		 System.out.println("END OF PROGRAMME.");
+		 
+	}
+}
+
+
+2.27)
+//Deitel's Java - Exercise 2.27
+//Checkerboard programme
+//Saad Mashkoor Siddiqui, 7/10/17
+
+public class Test2
+{
+	public static void main(String[] args)
+	{
+		
+		for (int i = 0; i < 8; i++)
+			
+		{
+			if (i%2 != 0)
+				System.out.print(" ");
+			for (int j = 0; j < 10; j++)
+				System.out.print("* ");
+			System.out.println();
+		}
+	}
+}
+
+
+2.28)
+//Deitel's Java - Exercise 2.28
+//Diameter of a circle
+//Saad Mashkoor Siddiqui, 7/10/17
+
+import java.util.Scanner;
+
+public class Test2
+{
+	public static void main(String[] args)
+	{
+		Scanner input = new Scanner(System.in);
+		double pi = Math.PI, radius;
+		
+		System.out.println("Enter radius of circle.");
+		radius = input.nextDouble();
+		
+		System.out.printf("Area:\t\t%f\n", pi * radius * radius);
+		System.out.printf("Diameter:\t%f\n", 2 * radius);
+		System.out.printf("Circumfrence:\t%f\n", 2 * pi * radius);
+		System.out.println("END OF PROGRAMME");
+	}
+}
+
+
+2.29)
+//Deitel's Java - Exercise 2.28
+//Unicode integer equivalents of characters
+//Saad Mashkoor Siddiqui, 7/10/17
+
+public class Test2
+{
+	public static void main(String[] args)
+	{
+		System.out.println("This programme displays the integer equivalents"
+				+ " certain characters.");
+		System.out.printf("The character %c has the value %d.\n", 'A', (int) 'A');
+		System.out.printf("The character %c has the value %d.\n", 'B', (int) 'B');
+		System.out.printf("The character %c has the value %d.\n", 'C', (int) 'C');
+		System.out.printf("The character %c has the value %d.\n", 'a', (int) 'a');
+		System.out.printf("The character %c has the value %d.\n", 'b', (int) 'b');
+		System.out.printf("The character %c has the value %d.\n", 'c', (int) 'c');
+		System.out.printf("The character %c has the value %d.\n", '0', (int) '0');
+		System.out.printf("The character %c has the value %d.\n", '1', (int) '1');
+		System.out.printf("The character %c has the value %d.\n", '2', (int) '2');
+		System.out.printf("The character %c has the value %d.\n", '*', (int) '*');
+		System.out.printf("The character %c has the value %d.\n", '+', (int) '+');
+		System.out.printf("The character %c has the value %d.\n", '/', (int) '/');
+		System.out.println("END OF PROGAMME.");
+	}
+}
+
+
+2.30)
+//Deitel's Java - Exercise 2.28
+//Separating digits in an integer
+//Saad Mashkoor Siddiqui, 7/10/17
+
+import java.util.Scanner;
+
+public class Test2
+{
+	public static void main(String[] args)
+	{
+		Scanner input = new Scanner(System.in);
+		int number;
+		
+		System.out.print("Enter an integer.\t");
+		number = input.nextInt();
+		
+		System.out.printf("%d\t", number/10000);
+		number = number%10000;
+		System.out.printf("%d\t", number/1000);
+		number = number%1000;
+		System.out.printf("%d\t", number/100);
+		number = number%100;
+		System.out.printf("%d\t", number/10);
+		number = number%10;
+		System.out.printf("%d\t", number);
+	}
+}
+
+/*
+When number has more than 5 digits, the last digit's output is a 2 digit number
+For example. if number = 654321, the output is 65	4	3	2	1
+
+When number has less than 5 digits, the last digit's output is 0.
+For example, if number = 5432, the output is 0	5	4	3	2
+*/
+
+
+2.31)
+//Deitel's Java - Exercise 2.31
+//Table of squares and cubes
+//Saad Mashkoor Siddiqui, 7/10/17
+
+public class Test2
+{
+	public static void main(String[] args)
+	{
+		System.out.println("Number\tSquare\tCube");
+		for (int i = 0; i < 11; i++)
+		{
+			
+			System.out.printf("%d\t%d\t%d\n", i, i * i, i * i * i);
+		}
+		System.out.println("END OF PROGRAMME.");
+	}
+}
+
+
+2.32)
+//Deitel's Java - Exercise 2.32
+//Counting positive and negative numbers
+//Saad Mashkoor Siddiqui, 7/10/17
+
+import java.util.Scanner;
+
+public class Test2
+{
+	public static void main(String[] args)
+	{
+		Scanner input = new Scanner(System.in);
+		
+		int	num1, num2, num3, num4, num5, 
+			positives = 0, negatives = 0, zeroes = 0;
+		System.out.print("Enter first number.\t");
+		num1 = input.nextInt(); 
+		if (num1 < 0)
+			negatives++;
+		else if (num1 > 0)
+			positives++;
+		else
+			zeroes++;
+
+		System.out.print("Enter second number.\t");
+		num2 = input.nextInt(); 
+		if (num2 < 0)
+			negatives++;
+		else if (num2 > 0)
+			positives++;
+		else
+			zeroes++;
+
+		System.out.print("Enter third number.\t");
+		num3 = input.nextInt(); 
+		if (num3 < 0)
+			negatives++;
+		else if (num3 > 0)
+			positives++;
+		else
+			zeroes++;
+
+		System.out.print("Enter fourth number.\t");
+		num4 = input.nextInt(); 
+		if (num4 < 0)
+			negatives++;
+		else if (num4 > 0)
+			positives++;
+		else
+			zeroes++;
+
+		
+		System.out.print("Enter fifth number.\t");
+		num5 = input.nextInt(); 
+		if (num5 < 0)
+			negatives++;
+		else if (num5 > 0)
+			positives++;
+		else
+			zeroes++;
+
+		System.out.println("You entered the numbers");
+		System.out.printf("%d\t%d\t%d\t%d\t%d\n", num1, num2, num3, num4, num5);
+		System.out.printf("Positive numbers:\t%d\n", positives);
+		System.out.printf("Negative numbers:\t%d\n", negatives);
+		System.out.printf("Zeroes:\t\t\t%d\n", zeroes);
+		System.out.println("END OF PROGRAMME");
+	}
+}
+
+
+2.33)
+//Deitel's Java - Exercise 2.33
+//BMI Calculator
+//Saad Mashkoor Siddiqui, 7/10/17
+
+import java.util.Scanner;
+
+public class Test2
+{
+	public static void main(String[] args)
+	{
+		Scanner input = new Scanner(System.in);
+		String	classification;
+		float	weight, height, BMI;
+		
+		System.out.print("Enter weight in kilograms.\t");
+		weight = input.nextFloat();
+		
+		System.out.print("Enter height in metres.\t");
+		height = input.nextFloat();
+		
+		BMI = weight/(height * height);
+		if (BMI < 18.5)
+			classification = "Underweight";
+		else if (BMI >= 18.5 && BMI <= 24.9)
+			classification = "Normal";
+		else if (BMI >= 25 && BMI <= 29.9)
+			classification = "Overweight";
+		else
+			classification = "30 or greater.";
+		
+		System.out.printf("Your BMI is:\t%f\n", BMI);
+		System.out.printf("Your BMI classification is:\t%s\n", classification);
+		System.out.println("END OF PROGRAMME");
+	}
+}
+
+
+2.34)
+//Deitel's Java - Exercise 2.34
+//Daily driving cost calculator
+//Saad Mashkoor Siddiqui, 7/10/17
+
+import java.util.Scanner;
+
+public class Test2
+{
+	public static void main(String[] args)
+	{
+		Scanner input = new Scanner(System.in);
+		float	totalMiles, costPerGallon, milesPerGallon, parkingPerDay, tollsPerDay,
+				totalGallons, totalCost;
+		
+		System.out.println("This programme calculates daily driving cost.");
+		
+		System.out.print("Enter total miles driven per day:\t");
+		totalMiles = input.nextFloat();
+		
+		System.out.print("Enter parking cost per day.\t");
+		parkingPerDay = input.nextFloat();
+		
+		System.out.print("Enter tolls per day.\t");
+		tollsPerDay = input.nextFloat();
+		
+		System.out.print("Enter miles driven per gallon for your vehicle.\t");
+		milesPerGallon = input.nextFloat();
+		
+		System.out.print("Enter cost per gallon.\t");
+		costPerGallon = input.nextFloat();
+		
+		totalGallons = totalMiles/milesPerGallon;
+		
+		totalCost = totalGallons*costPerGallon + parkingPerDay + tollsPerDay;
+		
+		System.out.printf("The total cost is:\t%f\n", totalCost);
+		System.out.println("END OF PROGRAMME");
+	}
+}

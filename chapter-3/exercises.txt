@@ -1,0 +1,434 @@
+Deitel: Chapter 3 - Exercises
+
+3.1a)public
+   b) class
+   c) new
+   d) data type/identifier or name
+   e) default package
+   f) instance variable
+   g) float and double
+   h) double-precision/15 significant figure
+   i) nextDouble
+   j) modifier
+   k) void
+   l) nextLine();
+   m) java.lang
+   n) import declaration
+   o) float/double
+   p) single precision/7 significant figure
+   q) %f
+   r) primitive, reference
+
+3.2a) False - method names begin with lowercase first letter
+	  First letters of all subsequent words are capitalised
+   b) True - if both classes are in the same directory, they are said
+      to be in the same package, called the default package. All classes
+      in a package are imported implicitly into the source code for all
+      classes in the same package.
+   c) True
+   d) True
+   e) False - only reference type variables can be used to invoke the methods
+      related to this variable
+   f) False - variables declared in the body of a method are local variables
+      Such variables can only be used in the method in which they are declared
+   g) True
+   h) False, only reference type variables are initialised by default
+      using either user-defined default constructors or, in the absence of such constructors,
+      a compiler defined default constructor
+   i) True?
+   j) True - only those java programmes with public static void main...are the 
+      ones that control execution
+   k) True
+   l) False, are of type double by default in Java.
+
+3.3) A local variable is a variable that is defined in the body of a method. This variable
+     cannot be used or accessed by other methods. 
+     A field or instance variable is an attribute of a class, which is defined outside the body
+     of any method within the class' definition. This instance variable can then be used by all
+     methods of the class. Each object of the class will maintain it's own copy of each field, which
+     means different objects can have different values for these variables. Such variables must be 
+     defined with an access modifier.
+     
+3.4) A method parameter is a piece of information used by the method to perform it's tasks. 
+	 Method parameters are defined in a parameter list in the header of a method's definition/declaration
+	 in the form of a data type and identifier.
+	 An argument is an actual value that is provided to a method CALL. The argument values
+	 are then substituted in place of the parameter in the method definition.
+	 Basically, a parameter is a placeholder variable to store an argument.
+	 
+3.5) The keyword is used every time an object of a class is created or instantiated to reserve memory
+	 for an object of the class, after which a default constructor(programmer-defined or compiler defined)
+	 is used to initialise the member variables of the object.
+
+3.6) A default constructor of a class is a method with the same name as class and no return type
+     that is used to create an object of the class with default values for the instance variables.
+     If the class has only a default constructor, the instance variables are initialised to their 
+     default values (0 or numeric primitive data types, null for others, false for boolean).
+
+3.7) Instance variables/fields are variables that define a class' attributes. These variables
+     are accessible to all methods of a class, and can be initialised with different values for 
+     different instances or objects of the class. This means that all methods of the class can 
+     use the values of the attributes of a particular object, and that each object can be
+     different from another if initialised to be so.
+
+3.8) Classes System and String are part of the java.lang package, which is imported implicitly in
+     every Java programme. This means the classes do not have to be imported explicitly.
+    
+3.9) By using the fully qualified class name for scanner 
+     java.util.Scanner input = new java.util.Scanner(System.in);
+	     
+3.10) get and set methods are used for data hiding or encapsulation - they prevent methods of other
+     classes from directly accessing or modifying the member variables of the class. At the same time,
+     if the get and set functions are declared with the access modifier public, then this allows
+     methods of other classes to indirectly access these member variables. Hence, set and get
+     functions provide necessary encapsulation while still allowing member variables to be accessed
+     by methods of other classes if needed.
+     
+3.10)
+//Deitel 3.11 - Modified Gradebook Class Definition
+//Saad Mashkoor Siddiqui, 7/10/2017
+
+public class Gradebook
+{
+	//FIELDS
+	private String name;
+	private String instructor;
+	
+	//CONSTRUCTORS
+	public Gradebook()
+	{
+		name = "Default Course Name";
+		instructor = "Default Instructor";
+	}
+	
+	public Gradebook(String myCourseName, String myInstructor)
+	{
+		name = myCourseName;
+		instructor = myInstructor;
+	}
+	
+	//SETTERS
+	public void setCourseName(String myName)
+	{
+		name = myName;
+	}
+	public void setInstructor(String myInstructor)
+	{
+		instructor = myInstructor;
+	}
+	
+	
+	//GETTERS
+	public String getCourseName()
+	{
+		return name;
+	}
+	public String getInstructor()
+	{
+		return instructor;
+	}
+	
+	
+	//OTHER METHODS
+	public void displayMessage()
+	{
+		System.out.printf("Welcome to Gradebook for:\t%s\n"
+				+ "This course is presented by:\t%s\n", name, instructor);
+	}
+	
+}
+
+3.12)
+/*
+ * AccountTest.java
+ * Driver class to test Account Class
+ * Saad Mashkoor Siddiqui, 7/10/2017
+ */
+
+import java.util.Scanner;
+public class AccountTest
+{
+	public static void main(String[] args)
+	{
+		Scanner	input = new Scanner(System.in);
+		Account acc1 = new Account();
+		Account acc2 = new Account("Mr Sandy Plankton", -320.42);
+		double  tempDouble;
+		
+		System.out.println("This programme tests the Account class.");
+		
+		System.out.println("ACC 1 DETAILS");
+		acc1.printDetails();
+		
+		System.out.println("\nACC 2 DETAILS");
+		acc2.printDetails();
+		
+		
+		System.out.print("Enter deposit amount for account 1:\t");
+		tempDouble = input.nextDouble();
+		acc1.credit(tempDouble);
+		System.out.printf("Acc 1 balance is now:\t%.2f\n", acc1.getBalance());
+		
+		acc1.debit(1000);
+		acc1.printDetails();
+		System.out.println("END OF PROGRAMME");
+		input.close();
+	}
+}
+
+3.13)
+//Deitel 3.13 - Invoice Class
+
+public class Invoice
+{
+	//FIELDS
+	private String	partNumber;
+	private String	partName;
+	private double	pricePerItem;
+	private int		qty;	
+	
+	
+	//CONSTRUCTORS
+	public Invoice()
+	{
+		partNumber = "0";
+		partName = "Default";
+		pricePerItem = 0.0;
+		qty = 0;
+	}
+	
+	public Invoice(String myPartNumber, String myName, int myQty, double myPrice)
+	{
+		partNumber = myPartNumber;
+		partName = myName;
+		if (myPrice < 0)
+			pricePerItem = 0.0;
+		else
+			pricePerItem = myPrice;
+		if (myQty < 0)
+			qty = 0;
+		else
+			qty = myQty;
+	}
+	
+	//GETTERS
+	public String getPartNumber()
+	{
+		return partNumber;
+	}
+	public String getPartName()
+	{
+		return partName;
+	}
+	public int getQuantity()
+	{
+		return qty;
+	}
+	public double getPricePerItem()
+	{
+		return pricePerItem;
+	}
+	
+	
+	//SETTERS
+	public void setPartNumber(String myNumber)
+	{
+		partNumber = myNumber;
+	}
+	public void setPartName(String myName)
+	{
+		partName = myName;
+	}
+	public void setPrice(double myPrice)
+	{
+		if (myPrice > 0)
+			pricePerItem = myPrice;
+	}
+	public void setQty(int myQty)
+	{
+		if (myQty > 0)
+			qty = myQty;
+	}
+	//OTHERS
+	public double getBill()
+	{
+		return pricePerItem * qty;
+	}
+}
+
+3.14)
+//Deitel 3.14 - Employee Class
+//Saad Mashkoor Siddiqui, 7/10/17
+
+public class Employee
+{
+	//FIELDS
+	private String firstName;
+	private String lastName;
+	private double monthlySalary;
+	
+	//CONSTRUCTORS
+	public Employee()
+	{
+		firstName = "John";
+		lastName = "Smith";
+		monthlySalary = 0.0;
+	}
+	
+	public Employee(String myFirstName, String myLastName,
+			double mySalary)
+	{
+		firstName = myFirstName;
+		lastName = myLastName;
+		if (mySalary < 0)
+			monthlySalary = 0;
+		else
+			monthlySalary = mySalary;
+	}
+	
+	//GETTERS
+	public String getFirstName()
+	{
+		return firstName;
+	}
+	
+	public String getLastName()
+	{
+		return lastName;
+	}
+	
+	public double getMonthlySalary()
+	{
+		return monthlySalary;
+	}
+	
+	//SETTERS
+	public void setFirstName(String myName)
+	{
+		firstName = myName;
+	}
+	
+	public void setLastName(String myName)
+	{
+		lastName = myName;
+	}
+	
+	public void setSalary(double mySalary)
+	{
+		if (mySalary > 0)
+			monthlySalary = mySalary;
+	}
+	
+	//OTHERS
+	
+	public void printDetails()
+	{
+		System.out.printf("First Name:\t%s\nLast Name:\t%s\nMonthly Salary:\t%.2f\n", 
+				firstName, lastName, monthlySalary);
+	}
+}
+
+public class EmployeeTest
+{
+	public static void main(String[] args)
+	{
+		Employee emp1 = new Employee();
+		Employee emp2 = new Employee("Saad", "Siddiqui", 100.00);
+		
+		System.out.println("Printing details for first employee.");
+		emp1.printDetails();
+		
+		System.out.println("Printing details for second employee.");
+		emp2.printDetails();
+		
+		System.out.println("Printing yearly salary of both employees.");
+		System.out.printf("Employee 1:\t%.2f\n", 12*emp1.getMonthlySalary());
+		System.out.printf("Employee 2:\t%.2f\n", 12*emp2.getMonthlySalary());
+		
+		System.out.println("Giving 10% raise to monthly salaries.");
+		emp1.setSalary(emp1.getMonthlySalary() + 0.1*emp1.getMonthlySalary());
+		emp2.setSalary(emp2.getMonthlySalary() + 0.1*emp2.getMonthlySalary());
+		
+		System.out.println("Employee details are now.");
+		emp1.printDetails();
+		emp2.printDetails();
+		
+		System.out.println("END OF PROGRAMME.");
+	}
+}
+
+3.15)
+public class Date
+{
+	//FIELDS
+	private 	int		day;
+	private		int		month;
+	private		int		year;
+	
+	//CONSTRUCTORS
+	public Date()
+	{
+		day = 1; month = 1; year = 2017;
+	}
+	
+	public Date(int myDay, int myMonth, int myYear)
+	{
+		day = myDay; month = myMonth; year = myYear;
+	}
+	//GETTERS
+	public int getDay()
+	{
+		return day;
+	}
+	
+	public int getMonth()
+	{
+		return month;
+	}
+	
+	public int getYear()
+	{
+		return year;
+	}
+	//SETTERS
+	public void setDay(int myDay)
+	{
+		day = myDay;
+	}
+	
+	public void setMonth(int myMonth)
+	{
+		month = myMonth;
+	}
+	
+	public void setYear(int myYear)
+	{
+		year = myYear;
+	}
+	
+	//OTHERS
+	public void displayDate()
+	{
+		System.out.printf("%d / %d / %d\n", day, month, year);
+	}
+}
+
+///Driver Class
+public class DateTest
+{
+	public static void main(String[] args)
+	{
+		System.out.println("This programme test the Date class.");
+		Date date1 = new Date();
+		Date date2 = new Date(6,5,1996);
+		
+		System.out.println("\nCurrent dates");
+		date1.displayDate();
+		date2.displayDate();
+		
+		date1.setDay(30); date1.setMonth(11); date1.setYear(1955);
+		System.out.println("\nDates are now");
+		date1.displayDate();
+		date2.displayDate();
+	}
+}
