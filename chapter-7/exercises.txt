@@ -1,0 +1,313 @@
+7.1a) arrays/multidimensional array
+   b) variables; type
+   c) enhanced for statement
+   d) index
+   e) multidimensional
+   f) for (double elements: numbers)
+   g) ? String variables?
+   h) ?
+   j)... (ellipsis)
+   
+7.2a) False. An array can only store variables of the same type.
+   b) False. An array index is always a positive integer.
+   c) Depends on the array. If the array is of primitive type elements, then passing the 
+      element to a method and modifying it in the method only affects the copy of the element
+      stored by the called method, and not the element in the caller.
+      
+      If the array was of reference type objects, however, then a copy of the object's reference
+      would be passed to the called method. Here, changes the called method would make to the 
+      element would also be made to element in the caller.
+   d) I don't know anything about command line arguments.
+
+7.3a) final int ARRAY_SIZE = 10;
+   b) double[] fractions = new double[ARRAY_SIZE];
+   c) fractions[4];
+   d) fractions[9] = 1.667;
+   e) fractions[6] = 3.333;
+   f) double sum = 0; 
+      for (int x = 0; x < fractions.length; x++)
+        sum += 0;
+
+7.4a) int[][] table = new int[ARRAY_SIZE][ARRAY_SIZE];
+   b) 9
+   c) for (int i = 0; i < table.size; i++)
+      {
+        for (int j = 0; j < table[i].size; j++)
+        { 
+          table[i][j] = i+j;
+        }
+      }
+
+7.5a) Cannot reinitialise a variable that has been declared with the final keyword.
+      Either remove the final keyword in the initialisation, or remove the ARRAY_SIZE = 10
+      reassignment.
+   b) The <= sign in the for loop continuation condition leads to an array out of bounds error.
+      Change to <
+   c) Syntax error. Should be a[1][1] = 5;
+
+7.6a) p[0], p[1], p[2], p[3];
+   b) declaring
+   c) row, column
+   d) m, n m*n
+   e) d[2][4];
+
+7.7a) False. To refer to a particular element of the array, we must specify the array's name
+      and the index/indices of the element in that array.
+   b) True.
+   c) False. Should be int[] p = new int[100];
+   d) False. Integer array, integers are primitive types, will automatically be initialised 
+      to 0s when the array is created. So no need for a for statement.
+   e) True
+
+7.8a) System.out.print(f[6]);
+   b) int[] g = {8,8,8,8,8};
+   c) float sum = 0;
+   	  for (float elements : c)
+       sum += elements; 
+   d) import java.util.Arrays;
+   	  System.arraycopy(a, 0, b, 0, a.length);
+   e) Arrays.sort(w);
+      float min = w[0];
+      float min = w[w - 1]; 
+
+7.9a)int[][] t = new int[2][3];
+   b) 2 rows
+   c) 3 columns
+   d) 6 elements
+   e) t[0][0], t[0][1], t[0][2]
+   f) t[0][1], t[1][1];
+   g) t[0][1] = 0;
+   h) t[0][0] = 0, t[0][1] = 0, t[0][2] = 0,
+      t[1][0] = 0, t[1][1] = 0, t[1][2] = 0
+   i) for (int i = 0; i < 2; i++)
+      {
+         for(int j = 0; j < 3; j++)
+         {
+           t[i][j] = 0;
+         }
+      }
+   j)
+   import java.util.Scanner;
+public class Scratchpad
+{
+	public static void main(String[] args)
+	{
+		int[][] t = new int[2][3];
+		Scanner input = new Scanner(System.in);
+		for (int i = 0; i < 2; i++)
+		{
+			for (int j = 0; j < 3; j++)
+			{
+				System.out.printf("Enter element t[%d][%d]:\t",i,j);
+				t[i][j] = input.nextInt();
+				System.out.println();
+			}
+		}
+		
+		for (int i = 0; i < 2; i++)
+		{
+			for (int j = 0; j < 3; j++)
+			{
+				System.out.printf("%d\t", t[i][j]);
+			}
+			System.out.println();
+		}
+	}
+}    
+
+ k) int min = t[0][0];
+    for (int i = 0; i < t.length; i++)
+    { 
+      for (int j = 1; j < t[i].length; j++)
+      { 
+         if t[i][j] < min
+           min = t[i][j];
+      }
+    }
+    System.out.printf("Min value is %d\n", min);
+ l) System.out.printf("%d\t%d\t%d\n", t[0][0], t[0][1], t[0][2]);
+ m) sum = t[0][2] + t[1][2];
+ n) 
+ import java.util.Scanner;
+public class Scratchpad
+{
+	public static void main(String[] args)
+	{
+		int[][] t = new int[2][3];
+		Scanner input = new Scanner(System.in);
+		for (int i = 0; i < 2; i++)
+		{
+			for (int j = 0; j < 3; j++)
+			{
+				System.out.printf("Enter element t[%d][%d]:\t",i,j);
+				t[i][j] = input.nextInt();
+				System.out.println();
+			}
+		}
+		
+		System.out.printf("%8s\t%d\t%d\t%d\n", "", 0, 1, 2);
+		for (int i = 0; i < 2; i++)
+		{
+			System.out.printf("%8d\t", i);
+			for (int j = 0; j < 3; j++)
+			{
+				System.out.printf("%d\t", t[i][j]);
+			}
+			System.out.println();
+		}
+	}
+}
+
+7.10)
+//SALES COMMISSION PROGRAMME
+import java.util.Random;
+
+public class Scratchpad
+{
+	public static void main (String[] args)
+	{
+		Random randomNumber = new Random();
+		double[] salaries = new double[20];
+		int[] frequency = new int[9];
+		
+		for (int i = 0; i < 20; i++)
+		{
+			salaries[i] = 200 + randomNumber.nextInt(5000)*0.09;
+		}
+		
+		System.out.println("Salaries generated are:\n");
+		for (int i = 0; i < salaries.length; i++)
+		{
+			System.out.printf("%d\t%.2f\n", i, salaries[i]);
+		}
+		
+		for (int i = 0; i < salaries.length; i++)
+		{
+			if(salaries[i] >= 1000)
+				frequency[frequency.length - 1]++;
+			else
+			{
+				for (int j = 0; j < frequency.length; j++)
+				{
+					if (salaries[i] >= 200 + j*100 && salaries[i] <= 299 + j*100)
+						frequency[j]++;
+				}
+			}
+		}
+		
+		System.out.printf("%12s\t%12s\n", "Range", "Frequency");		
+		for (int i = 0; i < frequency.length; i++)
+		{
+			String bar = "";
+			if (i == frequency.length - 1)
+				System.out.printf("%12s", ">= $1000: ");
+			else
+				System.out.printf("$%4d - $%4d: ", 200 + i*100, 299 +i*100);
+			for (int j = 0; j < frequency[i]; j++)
+			{
+				bar += "*";
+			}
+			System.out.printf("%-12s\n", bar);
+		}
+		
+	}
+}
+
+7.11)
+int[] counts = new int[10];
+for (int i = 0; i < bonus.length; i++)
+  bonus[i]++;
+for (int i = 0; i < bestScores.length; i++)
+	System.out.println(bestScores[i]);  
+	
+7.12)
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Scratchpad
+{
+	public static void main(String[] args)
+	{
+		Scanner input = new Scanner(System.in);
+		int temp, count = 0;
+		ArrayList<String> numbers = new ArrayList<String>();
+		do
+		{
+			System.out.print("Enter a number:\t");
+			temp = input.nextInt();
+			if (!numbers.contains(Integer.toString(temp)))
+			{
+				numbers.add(Integer.toString(temp));
+				System.out.printf("%s\n", Integer.toString(temp));
+			}
+			count++;
+		}
+		while(count < 5);
+		input.close();
+		System.out.printf("Total unique values entered:\t%d\n", numbers.size());
+		for (int i = 0; i < numbers.size(); i++)
+			System.out.printf("%s\t", numbers.get(i));
+		System.out.printf("\nArray size at end of programme:\t%d\n", numbers.size());
+	}
+}
+
+7.13) sales[0][0], sales[0][1], sales[0][2],...,sales[0][4]
+      sales[1][0], sales[1][1]....sales[2][4];
+
+7.14)
+public class Scratchpad
+{
+	public static void main(String[] args)
+	{
+		int n1 = 1, n2 = 2, n3 = 3, n4 = 4, n5 = 5;
+		System.out.printf("With 1 argument, %d\n", getProduct(n1));
+		System.out.printf("With 2 arguments, %d\n", getProduct(n1,n2));
+		System.out.printf("With 3 argument, %d\n", getProduct(n1,n2,n3));
+		System.out.printf("With 4 argument, %d\n", getProduct(n1,n2,n3,n4));
+		System.out.printf("With 5 argument, %d\n", getProduct(n1,n2,n3,n4,n5));
+	}
+	
+	public static int getProduct(int...numbers)
+	{
+		int result = 1;
+		for (int values : numbers)
+			result*=values;
+		return result;
+	}
+}
+
+7.17)
+import java.util.Random;
+
+public class Scratchpad
+{
+	
+	public static void main(String[] args)
+	{
+		Random randomNumber = new Random();
+
+		long[] frequency = new long[11];
+		int die1, die2, total;
+		
+		for (int i = 0; i < 36000000; i++)
+		{
+			die1 = 1 + randomNumber.nextInt(12);
+			die2 = 1 + randomNumber.nextInt(12);
+			total = die1 + die2;
+
+			for (int j = 0; j < frequency.length; j++)
+			{
+				if (total == j + 2)
+					frequency[j]++;
+			}
+		}
+		System.out.println("Simulation Results:");
+		System.out.printf("%5s\t%10s\n", "Sum", "Frequency");
+		for (int i = 0; i < frequency.length; i++)
+		{
+			System.out.printf("%5d\t%10d\n", i+2, frequency[i]);
+		}
+	}
+}
+
+7.19)

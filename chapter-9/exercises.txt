@@ -1,0 +1,22 @@
+9.1a)inheritance
+   b) public/protected
+   c) is-a
+   d) has-a
+   e) hierarchical/inheritance
+   f) public
+   g) constructor
+   h) super
+
+9.2a)True. Superclass constructors are not inherited by subclasses, but subclasses
+     usually do call the superclass constructor in their own constructors using
+     super followed by a list of arguments.
+   b)False. Has-a relationship is implemented by composition. In composition, a
+     class has a reference to objects of another class as its member variables or 
+     in its member methods.
+   c) False. A Car has a steering wheel and brakes, so a Car object will have reference
+     to a SteeringWheel and Brake objects.
+   d) False. This is overriding, not overloading. An overloaded method will have the same 
+     name but a different signature. 
+
+9.3) FUCK NULL POINTER EXCEPTIONS
+

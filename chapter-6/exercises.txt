@@ -1,0 +1,200 @@
+6.1a) method call
+   b) local variable
+   c) return
+   d) void
+   e) top 
+   f) LIFO (last in, first out)
+   g) return; return with a statement; closing the right brace
+   h) Random
+   i) activation stack or activation record
+   j) stack overflow error
+   k) scope
+   l) overloading
+   m) method call - keeps track of which method was called last
+
+6.2a) scope - the entire Craps class defintion
+   b) die1 - the function rollDice() only
+   c) rollDice() - can be called at any point in the class definition
+   d) main - Anywhere in the class defintion
+   e) sumOfDice - main function only
+   
+6.4a) double hypotenuse(double side1, double side2)
+   b) int smallest(int x, int y, int z)
+   c) void instructions()
+   d) float intToFloat(int number)
+
+6.5a) Cannot have a function definition inside another function defintion.
+   b) Does not return an integer result
+   c) Declares a local variable that has the same name i.e. shadows the parameter
+   d) Returns an integer even though it is a void function
+   
+6.6)
+
+import java.util.Scanner;
+
+public class scratchpad
+{
+	public static void main(String[] args)
+	{
+		Scanner input = new Scanner (System.in);
+		double radius, volume;
+		
+		System.out.println("Enter radius of sphere.");
+		radius = input.nextDouble();
+		volume = sphereVolume(radius);
+		
+		input.close();
+		
+		System.out.printf("Sphere Volume:\t%6.2f\n", volume);
+		System.out.println("END OF PROGRAMME");
+	}
+	
+	public static double sphereVolume(double myRadius)
+	{
+		return ((4.0/3) * Math.PI* Math.pow(myRadius, 3));
+	}
+	
+}
+
+6.7a) 7.5
+   b) 7
+   c) 0
+   d) 0
+   e) 6.4
+   f) -6.0
+   g) -14.0
+
+6.8)
+
+6.35 - 6.39)
+import java.util.Random;
+import java.util.Scanner;
+
+public class Game
+{
+	//Fields
+	private static int totalAttempts = 0;
+	private static int totalCorrect = 0;
+	private static int totalIncorrect = 0;
+	
+	//Random and Scanner objects
+	private static final Random randomNumbers = new Random();
+	private static Scanner input = new Scanner (System.in);
+	
+	//Methods
+	private static String getGoodResponse()
+	{
+		int responseNum = 1 + randomNumbers.nextInt(4);
+		String response;
+		switch(responseNum)
+		{
+		case(1):
+			response = "Very good!";
+			break;
+		case(2):
+			response = "Excellent!";
+			break;
+		case(3):
+			response = "Nice work!";
+			break;
+		case(4):
+			response = "Keep up the goodwork!";
+			break;
+		default:
+			response = "NA";
+		}
+		return response;
+	}
+	private static String getRepeatResponse()
+	{
+		int responseNum = 1 + randomNumbers.nextInt(4);
+		String response;
+		switch(responseNum)
+		{
+		case(1):
+			response = "Sorry! Please try again.";
+			break;
+		case(2):
+			response = "Wrong. Try again!";
+			break;
+		case(3):
+			response = "Sorry! Don't give up!!";
+			break;
+		case(4):
+			response = "Incorrect! Keep trying!";
+			break;
+		default:
+			response = "NA";
+		}
+		return response;
+	}
+	private static void askQuestion(int difficultyLevel)
+	{
+		int num1 = (int) (Math.pow(10.0, difficultyLevel - 1) + 
+				difficultyLevel*randomNumbers.nextInt(9));
+		int num2 = (int) Math.pow(10.0, difficultyLevel -1) +
+				difficultyLevel*randomNumbers.nextInt(9);
+		int userResponse;
+		int answer = num1 * num2;
+		do
+		{	totalAttempts++;
+			System.out.printf("%d * %d = ?\t", num1, num2);
+			userResponse = input.nextInt();
+			if (userResponse != answer)
+			{
+				System.out.println(getRepeatResponse());
+				totalIncorrect++;
+			}
+			else
+				totalCorrect++;
+		}
+		while(userResponse != answer);
+		System.out.println(getGoodResponse());
+	}
+	private static void printSummary()
+	{
+		double percentCorrect = ((double)totalCorrect/totalAttempts)*100;
+		double percentIncorrect = ((double)totalIncorrect/totalAttempts)*100;
+		
+		System.out.printf("Total Questions Attempted:\t%d\n", totalAttempts);
+		System.out.printf("Total Incorrect Answers:\t%d\n", totalIncorrect);
+		System.out.printf("Total Correct Answers:\t%d\n", totalCorrect);
+		System.out.printf("Correct:Incorrect percentages = %.2f : %.2f\n",
+				percentCorrect, percentIncorrect);
+		if (percentCorrect >= 75.0)
+			System.out.println("Great job! You are"
+					+ " ready for the next stage!");
+		else
+			System.out.println("Please ask your "
+					+ "teacher for extra help.");
+	}
+	
+	//MAIN BEGINS HERE
+	public static void main(String[] args)
+	{
+		int proceed, lvl;
+		
+		System.out.println("This programme tests your arithmetic skills.");
+		System.out.println("Choose operation.");
+		System.out.println("1: Addition\t2: Subtraction\t3: Multiplication\t"
+				+ "4: Division\t5: Mixed\n");
+		
+		System.out.println("Choose difficulty level.");
+		System.out.print("1: Single Digit\t\t2: Double Digits\t3: Triple Digits\n");
+		lvl = input.nextInt();
+		System.out.printf("You have selected difficult level %d.\n", lvl);
+		System.out.printf("You will be tested on %d digit multiplication.\n", lvl);
+		do
+		{
+			askQuestion(lvl);
+			if ((totalAttempts)%5 == 0)
+				printSummary();
+			System.out.println("Enter 0 to continue, -1 to exit.");
+			proceed = input.nextInt();
+		}
+		while(proceed != -1);
+		printSummary();
+		input.close();
+		System.out.println("END OF PROGRAMME");
+	}
+}
