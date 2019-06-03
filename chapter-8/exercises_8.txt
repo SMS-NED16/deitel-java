@@ -1,0 +1,426 @@
+8.2) When an instance variable of a class is declared without specifying
+an access modifier such as private, public or protected, the variable 
+becomes a package access variable by default. This means that the variable
+can be accessed by methods of all classes that belong to the same package
+as the variable's class. Practically, this means that any classes which,
+when compiled, will generate .class files in the same directory are 
+part of the same package. Methods of these classes can access (and modify)
+package access variables of other classes. 
+
+The drawback of package access is that methods of other classes can 
+accidentally (or maliciously) access and modify package access variables.
+This is against the principle of least privilege, which is a part of 
+good software engineering.
+
+The benefit of package access is that it allows related classes to be 
+grouped together into a single software unit that promotes reuse. Packages
+can be used to import all or some classes into a programme rather than 
+copying their code into the programme, which saves time and space. 
+For instance, package java.lang is a package that contains several 
+commonly used Java classes such as Math. It is imported automatically
+in every Java programme. 
+--------------------------------------------------------------------------
+8.3) Compilation error occurs. Java does allow for a method to have the 
+same name as the class and have a return type. However, such methods are
+not constructors, and trying to use them as such leads to compilation 
+errors. Specifying a return type for a constructor effectively makes it 
+into a different method, and not a constructor. 
+--------------------------------------------------------------------------
+8.4) 
+// Exercise 8.4a - Rectangle.java
+// A simple class to represent a rectangle
+package exercises_8;
+
+public class Rectangle
+{
+	double length;			// length of rectangle
+	double width;			// width of rectangle
+	
+	// CONSTRUCTORS 
+	public Rectangle()
+	{
+		length = setLength( 1.0f );
+		width = setLength( 1.0f );
+	}	// end Rectangle no-argument constructor
+	
+	public Rectangle( double theLength, double theWidth )
+	{
+		length = setLength( theLength );
+		width = setLength( theWidth );
+	}	// end two-argument constructor for Rectangle
+	
+	// SET METHODS - PERFORM VALIDATION
+	// sets the length of the rectangle
+	public double setLength( double theLength )
+	{
+		if ( theLength > 0.0 && theLength <= 20.0 )
+			return theLength;
+		else
+			throw new IllegalArgumentException( "length must be 0.1 - 20.0" );
+	}	// end setLength
+	
+	// sets the width of the rectangle
+	public double setWidth( double theWidth )
+	{
+		if ( theWidth > 0.0 && theWidth <= 20.0 )
+			return theWidth;
+		else
+			throw new IllegalArgumentException( "width must be 0.1 - 20.0" );
+	}
+	
+	// GET METHODS
+	public double getLength()
+	{
+		return length;
+	}	// end method getLength
+	
+	public double getWidth()
+	{
+		return width;
+	}	// end method getWidth()
+	
+	// OTHER METHODS
+	// returns the area of the rectangle
+	public double getArea()
+	{
+		return getLength() * getWidth();
+	}	// end method getArea
+	
+	// returns the perimeter of the rectangle
+	public double getPerimeter()
+	{
+		return 2 * ( getLength() + getWidth() ); 
+	}	// end method getPerimeter
+	
+	// returns a String representation of the rectangle
+	public String toString()
+	{
+		return String.format( "%10s: %5.2f\n%10s: %5.2f\n%10s:\t%5.2f\n%10s: %5.2f\n", 
+				"Length", getLength(), "Width", getWidth(),
+				"Area", getArea(), "Perimeter", getPerimeter() );
+	}	// end method toString
+}	// end class Rectangle
+
+/******************************************************************/
+// Exercise 8.4b - RectangleTest.java
+// Test application for Rectangle class
+package exercises_8;
+
+public class RectangleTest
+{
+	public static void main( String[] args )
+	{
+		// Creating a Rectangle object with call to no-argument constructor
+		Rectangle rect1 = new Rectangle();
+		System.out.println( "Printing data for Rectangle 1" );
+		System.out.println( rect1.toString() );
+		
+		// Creating a Rectangle object with call to two-argument constructor
+		Rectangle rect2 = new Rectangle( 10.0, 5.0 );
+		System.out.println( "Printing data for Rectangle 2" );
+		System.out.println( rect2.toString() );
+		
+		// Initialise with invalid values
+		System.out.println( "Trying to initialise Rectangle 3 with invalid values." );
+		try 
+		{
+			Rectangle rect3 = new Rectangle( 40.0, -18.9 );
+		}	// end try block 
+		catch ( IllegalArgumentException e )
+		{
+			System.out.println( "Cannnot initialise rect3" );
+			System.out.println( e.getMessage() );
+		}	// end catch block
+	}	// end method main
+}	// end class RectangleTest
+--------------------------------------------------------------------------
+8.5)
+// Exercise 8.5a - Time2.java
+// Modified version of Example 8.5 that stores time
+// as number of seconds since midnight
+package exercises_8;
+
+public class Time2
+{
+	private int secondsSinceMidnight; 
+	private final int SECONDS_IN_MINUTE = 60;
+	private final int MINUTES_IN_HOUR = 60;
+	private final int SECONDS_IN_HOUR = 3600;
+	
+	// Time2 no-argument constructor
+	// initializes instance variables to 0
+	public Time2()
+	{
+		this( 0, 0, 0 );
+	}	// end no-argument constructor
+	
+	// Time2 constructor: hour supplied, minute and second defaulted to 0
+	public Time2( int h )
+	{
+		this( h, 0, 0 );
+	}	// end one-argument Time2 constructor
+	
+	// Time2 constructor: hour and minute supplied, second defaulted to 0
+	public Time2( int h, int m )
+	{
+		this( h, m, 0 );
+	}	// end two-argument Time2 constructor
+	
+	// Time2 constructor: hour, minute, second supplied
+	public Time2( int h, int m, int s )
+	{
+		setTime( h, m, s );
+	}	// end three-argument Time2 constructor
+	
+	// Time2 constructor: another Time2 object supplied
+	public Time2( Time2 time )
+	{
+		// invoke Time2 three-argument constructor
+		this( time.getHour(), time.getMinute(), time.getSecond() );
+	}	// end Time2 constructor with Time2 object
+	
+	// SET METHODS
+	public void setTime( int h, int m, int s )
+	{
+		setHour( h );	
+		setMinute( m );
+		setSeconds( s );
+	}	// end setTime 
+	
+	public void setHour( int h )
+	{
+		if ( h >= 0 && h < 24 )
+			secondsSinceMidnight += h * SECONDS_IN_HOUR;
+		else
+			throw new IllegalArgumentException( "hour must be 0 - 23" );
+	}	// end setHour
+	
+	public void setMinute( int m )
+	{
+		if ( m >= 0 && m < 60 )
+			secondsSinceMidnight += m * SECONDS_IN_MINUTE;
+		else
+			throw new IllegalArgumentException( "minute must be 0 - 59" );
+	}	// end setMinute
+	
+	public void setSeconds( int s )
+	{
+		if ( s >= 0 && s < 60 )
+			secondsSinceMidnight += s;
+		else
+			throw new IllegalArgumentException( "seconds must be 0 - 59" );
+	}	// end setSecond
+	
+	// GET METHODS
+	public int getHour()
+	{
+		return secondsSinceMidnight / SECONDS_IN_HOUR;
+	}	// end method getHour()
+	
+	public int getMinute()
+	{
+		return ( secondsSinceMidnight % SECONDS_IN_HOUR ) / MINUTES_IN_HOUR; 
+	}	// end method getMinute();
+	
+	public int getSecond()
+	{
+		return ( secondsSinceMidnight % SECONDS_IN_MINUTE );
+	}	// end method getSecond 
+	
+	// convert to String in universal-time format (HH:MM:SS)
+	public String toUniversalString()
+	{
+		return String.format( "%02d:%02d:%02d", 
+				getHour(), getMinute(), getSecond() );
+	}	// end method toUniversalString
+	
+	// convert to String in standard-time format (H:MM:SS AM or PM)
+	public String toString()
+	{
+		return String.format( "%d:%02d:%02d %s",
+				( getHour() == 0 || getHour() == 12 ? 12 : getHour() % 12 ), 
+				getMinute(), getSecond(), ( getHour() < 12 ? "AM" : "PM" ) );
+	}	// end method toString
+}	// end class Time2
+/******************************************************************/
+// Exercise 8.5b - Time2Test.java
+// Test application for Exercise 8.5a - Time2
+package exercises_8;
+
+public class Time2Test
+{
+	public static void main( String[] args )
+	{
+		Time2 t1 = new Time2(); 			// 00:00:00
+		Time2 t2 = new Time2( 2 );			// 00:00:00
+		Time2 t3 = new Time2( 21, 34 );		// 21:34:00
+		Time2 t4 = new Time2( 12, 25, 42 );	// 12:25:42
+		Time2 t5 = new Time2( t4 );			// 12:25:42
+		
+		printTimeData( t1, "t1: all arguments defaulted" );
+		printTimeData( t2, "t2: hour specified, minute and second defaulted." );
+		printTimeData( t3, "t3: hour, minute specifed; second defaulted" );
+		printTimeData( t4, "t4: hour, minute, second specified" );
+		printTimeData( t5, "t5: Time2 object t4 specified" );
+		
+		// attempt to initialise t6 with invalid values
+		try
+		{
+			Time2 t6 = new Time2( 27, 74, 49 );
+		}	// end try block
+		catch ( IllegalArgumentException e )
+		{
+			System.out.printf( "\nException while initializing t6: %s\n", 
+					e.getMessage() );
+		}	// end catch block
+	}	// end method main
+	
+	public static void printTimeData( Time2 myTime, String description )
+	{
+		System.out.printf( "%s\n", description );
+		System.out.printf( "    %s\n", myTime.toUniversalString() );
+		System.out.printf( "    %s\n", myTime.toString() );
+	}	//end method printTimeData
+}	// end class Time2Test
+--------------------------------------------------------------------------
+8.6)
+// Exercise 8.6 - SavingsAccount.java
+// A simple class to model a Savings Account
+// Has a class variable annualInterestRate shared between all objects
+package exercises_8;
+
+public class SavingsAccount
+{
+	private double balance;						// account balance
+	private static double annualInterestRate;	// shared between all objects
+	
+	// CONSTRUCTORS
+	// no argument constructor
+	public SavingsAccount()
+	{
+		// blank body, balance init to 0 automatically
+	}	// end no-argument constructor
+	
+	public SavingsAccount( double theBalance )
+	{
+		try 
+		{
+			setBalance( theBalance );
+		}	// end try block
+		catch ( IllegalArgumentException e )
+		{
+			System.out.println( e.getMessage() );
+		}	// end catch block
+	}	// end single-argument constructor
+	
+	// GETTERS
+	public double getBalance()
+	{
+		return balance;
+	}	// end method getAccountBalance
+	
+	public double getAnnualInterestRate()
+	{
+		return annualInterestRate * 100;	
+	}	// end method getAnnualInterestRate
+	
+	// SETTERS
+	public void setBalance( double theBalance )
+	{
+		if ( theBalance >= 0.0 )
+			balance = theBalance;
+		else
+			throw new IllegalArgumentException( "Balance must be >= 0.0" );
+	}	// end method theBalance
+	
+	// OTHER METHODS
+	// returns a String representation of a SavingsAccount object
+	public String toString()
+	{
+		return String.format( "%-10s: %-10.2f\n%-10s: %-10.2f\n",
+				"Balance", getBalance(), "Rate(%p.a)", getAnnualInterestRate() );
+	}	// end method toString
+	
+	// returns the monthly interest
+	public double calculateMonthlyInterest()
+	{
+		return getBalance() * ( getAnnualInterestRate() / 100.0 ) / 12;
+	}	// end method calculateMonthlyInterest
+	
+	// updates the balance of the account after calculating interest
+	public void updateBalance()
+	{
+		setBalance( getBalance() + calculateMonthlyInterest() );
+	}	// end method updateBalance
+	
+	// a static method to change the interest rate
+	public static void modifyAnnualInterestRate( double theRate )
+	{
+		if ( theRate >= 0.0 )
+			annualInterestRate = theRate / 100.0;
+		else
+			throw new IllegalArgumentException( "Annual interest rate must be >= 0.0" );
+	}	// end method modifyAnnualInterestRate
+}	// end class SavingsAccount
+/******************************************************************/
+// Exercise 8.6b - SavingsAccountTest.java
+// Test application for 8.6a - SavingsAccount.java
+package exercises_8;
+
+public class SavingsAccountTest
+{
+	public static void main( String[] args )
+	{
+		// Create two SavingsAccount objects
+		SavingsAccount saver1 = new SavingsAccount( 2000.0 );
+		SavingsAccount saver2 = new SavingsAccount( 3000.0 );
+		
+		// Set the annual interest rate for both accounts to 4%
+		SavingsAccount.modifyAnnualInterestRate( 4 );
+		
+		// Print balance and monthly interest at 4% for saver1
+		System.out.println( "\n\nPrinting interest data for saver1" );
+		printBalance( saver1, 12 );
+		
+		// Print balance and monthly interest at 4% for saver2
+		System.out.println( "\n\nPrinting interest data for saver2" );
+		printBalance( saver2, 12 );
+		
+		// Set the annual interest rate for both accounts to 5%
+		SavingsAccount.modifyAnnualInterestRate( 5 );
+		
+		// Print balance and monthly interest at 5% for saver1
+		System.out.println( "\n\nPrinting interest data for saver1" );
+		printBalance( saver1, 1 );
+		
+		// Print balance and monthly interest at 5% for saver2
+		System.out.println( "\n\nPrinting interest data for saver2" );
+		printBalance( saver2, 1 );
+		
+		System.out.println( "\nFINAL BALANCES" );
+		System.out.printf( "Saver1\n%s\n", saver1.toString() );
+		System.out.printf( "Saver2\n%s\n", saver2.toString() );
+		
+	}	// end method main
+	
+	// prints the balance and monthly interest for a given savings account
+	// over a specified number of months
+	public static void printBalance( SavingsAccount theSaver, int months )
+	{
+		// print table headers
+		System.out.printf( "%8s%10s%10s\n", 
+				"Month", "Balance", "Interest" );
+		
+		// 0th month = current month
+		for ( int i = 0; i < months; i++ )
+		{
+			// print the data for the current month
+			System.out.printf( "%8d%10.2f%10.2f\n", i, 
+					theSaver.getBalance(), theSaver.calculateMonthlyInterest() );
+			
+			// update the balance for the next month
+			theSaver.updateBalance();
+		}	// end for loop to print data
+	}	// end method printBalance
+}	// end class SavingsAccountTest
+--------------------------------------------------------------------------

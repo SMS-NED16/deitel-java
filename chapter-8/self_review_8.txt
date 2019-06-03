@@ -1,0 +1,24 @@
+8.1a) -d 
+   b) String.format
+   c) shadows
+   d) Object.finalize
+   e) single-type-import
+   f) a default constructor
+   g) toString
+   h) accessor methods, query methods
+   i) predicate
+   j) values
+   k) has-a
+   l) enum
+   m) static
+   n) single static import
+   o) principle of least privilege
+   p) final
+   q) package declaration
+   r) type-import-on-demand
+   s) class loader
+   t) ----
+   u) mutator
+   v) static import on demand
+   w) public services, public interface
+--------------------------------------------------------------------------
